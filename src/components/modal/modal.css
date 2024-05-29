@@ -1,0 +1,153 @@
+/* The Modal (background) */
+.modal {
+    /*display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 10px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color:transparent; /* Fallback color */
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #FFFFFF;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 35%;
+    height: 45%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*-webkit-animation-name: animatetop; /* Remove this line */
+    /*-webkit-animation-duration: 0.4s; /* Remove this line */
+    animation-name: animatetop; /* Remove this line */
+    animation-duration: 0.4s; /* Remove this line */
+    border-radius: 10px;
+     
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px; 
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 8px;
+}
+
+.col-md-6{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* .modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+} *//* The Modal (background) */
+
+input{
+    outline: none;
+    padding: 4px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+}
+input:focus{
+    border-color: #5cb85c;
+    border: 2px solid #5cb85c;
+}
+
+.modal-title{
+    padding: 0 10px;
+    text-align: center;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial; 
+}
+
+.custom-select select {
+    outline: none;
+    padding: 4px;
+    box-sizing: border-box;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.custom-select select:focus{
+    border-color: #5cb85c;
+    border: 2px solid #5cb85c;
+}
+option{
+    
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+    margin: 10px;
+  }
+
+  .todo-btn{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    gap: 1px;
+  }
+
+  .todo-btn   .save-todo  {
+    width: 100%;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    margin: 4px 0;
+    border: none;
+    background-color: #007bff;
+  }
+
+  
+  .todo-btn   .save-todo:hover {
+    
+    background-color: #0069D9;
+  }
+
+  
+  .todo-btn   .cancel-todo  {
+    width: 100%;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    margin: 4px 0;
+    border: none;
+    background-color: #dc3545;
+  }
+
+  
+  .todo-btn   .cancel-todo:hover {
+    
+    background-color: #C82333;
+  }
+
+ 

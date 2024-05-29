@@ -1,0 +1,106 @@
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  
+}
+
+.todo-list {
+  display: flex;
+  margin: 2px ; 
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+.todo-item {
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: space-between;
+  background-color: #F2F2F2;
+   padding: 10px;
+   border-radius: 10px;
+   margin: 4px ;
+}
+.todo-search {
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+}
+
+.todo-search input {
+  width: 40vh;
+}
+.todo-content {
+  flex-grow: 1;
+  padding: 0 10px; /* This will make .todo-content occupy the remaining space */
+}
+.todo-btn-grp {
+  flex-grow: 0;
+}
+.check-box {
+  padding: 0;
+  margin: 0;
+}
+.check-box-container {
+  flex-grow: 0;
+}
+button {
+  background-color: red;
+  color: white;
+}
+
+
+.btn-primary  {
+   
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  margin: 4px 0;
+  border: none;
+  background-color: #007bff;
+  margin: 0 4px ;
+}
+
+
+.btn-primary:hover {
+  
+  background-color: #0069D9;
+}
+
+
+
+
+.btn-danger  {
+   
+  padding: .375rem .75rem;
+  border-radius: .25rem;
+  margin: 4px 0;
+  border: none;
+  background-color: #dc3545;
+  margin: 0 4px ;
+}
+
+
+.btn-danger:hover { 
+ 
+  
+  background-color: #C82333;
+}
+
+.todo-status {
+  background-color: wheat;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 8px;
+  font-weight: bold ;
+}
+.todo-title{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.todo-desc{
+  font-size: 12px; 
+}
