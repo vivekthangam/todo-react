@@ -6,13 +6,58 @@ import { dbWrapper } from "./lib/dbWrapperInitialization";
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [todos, setTodos] = useState([]);
+  const [filterToDo, setFilterToDo] = useState([]);
   const [selectedTodo, setSelectedTodo] = useState(null);
 
+  const [searchText, setSearchText] = useState("");
+  
+  // filter records by search text
+  const filterData = (value) => {
+    const lowercasedValue = value.toLowerCase().trim();
+    if (lowercasedValue === "") setFilterToDo([]);
+    else {
+      console.log(lowercasedValue);
+      const filteredData = todos.filter(item => {
+        return Object.keys(item).some(key =>
+            item[key].toString().toLowerCase().includes(lowercasedValue)
+        );
+      });
+      setFilterToDo(filteredData);
+    }
+  }
   const showModalFn = (todo = null) => {
     setSelectedTodo(todo);
     setShowModal(!showModal);
   };
+  function TodoItem({ todos, showModalFn, handleDelete }) {
+    return (
+      <div className="todo-list">
+          {todos.map((todo) => (
+            <div className="todo-item" key={todo.id}>
+            
+              <div className="todo-content">
+                <div className="todo-title">
+                  <span>{todo.title}</span>
+                </div>
+                <div className="todo-desc">
+                  <span>{todo.description}</span>
+                </div>
+              </div>
 
+              <div className="todo-status">
+                
+                  <span>{todo.status}</span>
+                  
+              </div>
+              <div className="todo-btn-grp">
+              <button className="btn-primary" onClick={() => showModalFn(todo)}>edit</button>
+              <button className="btn-danger" onClick={() => handleDelete(todo.id)}>delete</button>
+            </div>
+            </div>
+          ))}
+        </div>
+    );
+  }
   useEffect(() => {
     const initializeDatabase = async () => {
       try {
@@ -60,7 +105,11 @@ function App() {
       console.error(error);
     }
   };
-
+  const handleChange = (value) => {
+    setSearchText(value);
+    filterData(value);
+    console.log("hvhvh",filterToDo);
+  };
   const handleDelete = async (id) => {
     try {
       await dbWrapper.deleteData(id);
@@ -77,34 +126,13 @@ function App() {
     <>
       <div className="todo-container">
         <div className="todo-search">
-          <input type="text" />
+          <input placeholder="search here"   onChange={e => handleChange(e.target.value)} type="text" />
           <button onClick={() => showModalFn(null)}>Add</button>
         </div>
-        <div className="todo-list">
-          {todos.map((todo) => (
-            <div className="todo-item" key={todo.id}>
-            
-              <div className="todo-content">
-                <div className="todo-title">
-                  <span>{todo.title}</span>
-                </div>
-                <div className="todo-desc">
-                  <span>{todo.description}</span>
-                </div>
-              </div>
-
-              <div className="todo-status">
-                
-                  <span>{todo.status}</span>
-                  
-              </div>
-              <div className="todo-btn-grp">
-              <button className="btn-primary" onClick={() => showModalFn(todo)}>edit</button>
-              <button className="btn-danger" onClick={() => handleDelete(todo.id)}>delete</button>
-            </div>
-            </div>
-          ))}
-        </div>
+        <TodoItem todos={
+          filterToDo.length > 0? filterToDo : todos
+        } showModalFn={showModalFn} handleDelete={handleDelete}></TodoItem>
+         
       </div>
       {showModal && (
         <ReactCustomModal
